@@ -9,6 +9,7 @@ public class PlayerOneController : MonoBehaviour
 {
     private GameObject Player;
     private float speed = 2.4f;
+    private float RotationSpeed = 43.4f;
 
     public void Start()
     {
@@ -17,9 +18,9 @@ public class PlayerOneController : MonoBehaviour
 
     public void Update()
     {
-        float moveVertical = Input.GetAxis("Vertical");
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * moveVertical);
-        transform.Translate(Vector3.right * Time.deltaTime * speed * moveHorizontal);
+        float moveVertical = Input.GetAxis("Vertical") * Time.deltaTime * speed;
+        float Rotation = Input.GetAxis("Horizontal") * Time.deltaTime * RotationSpeed;
+        transform.Translate(0, 0, moveVertical);
+        transform.Rotate(0, Rotation, 0);
     }
 }

@@ -8,8 +8,8 @@ using UnityEngine;
 public class PlayerOneController : MonoBehaviour
 {
     private GameObject Player;
-    private float speed = 2.4f;
-    private float RotationSpeed = 43.4f;
+    private float speed = 8.4f;
+    private float RotationSpeed = 60;
 
     public void Start()
     {

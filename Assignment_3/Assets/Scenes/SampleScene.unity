@@ -987,6 +987,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RayLength: 10
+  HighLight: {fileID: 2100000, guid: 5eaa3c933da9a8b469c4f3d5e2f322c3, type: 2}
+  NormalMaterial: {fileID: 2100000, guid: 6c2a7a3006db1df48b06fed4222a5f52, type: 2}
+  Props: {fileID: 1264043956}
 --- !u!4 &473539877 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4646160277296803439, guid: 2d1aed8ada79e4d4e99084037c3b094a, type: 3}

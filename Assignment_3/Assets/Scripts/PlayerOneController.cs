@@ -20,8 +20,8 @@ public class PlayerOneController : MonoBehaviour
 
     public void FixedUpdate()
     {
-        float moveVertical = Input.GetAxis("Vertical");
-        float Rotation = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("VerticalArrowKeys");
+        float Rotation = Input.GetAxis("HorizontalArrowKeys");
         Vector3 movement = transform.forward * moveVertical * speed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + movement);
         Quaternion rotation = Quaternion.Euler(0, Rotation * RotationSpeed * Time.fixedDeltaTime, 0);

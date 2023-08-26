@@ -8,19 +8,23 @@ using UnityEngine;
 public class PlayerOneController : MonoBehaviour
 {
     private GameObject Player;
+    public Rigidbody rb;
     private float speed = 8.4f;
     private float RotationSpeed = 60;
 
     public void Start()
     {
         Player = gameObject;
+        rb = Player.GetComponent<Rigidbody>();
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
-        float moveVertical = Input.GetAxis("Vertical") * Time.deltaTime * speed;
-        float Rotation = Input.GetAxis("Horizontal") * Time.deltaTime * RotationSpeed;
-        transform.Translate(0, 0, moveVertical);
-        transform.Rotate(0, Rotation, 0);
+        float moveVertical = Input.GetAxis("Vertical");
+        float Rotation = Input.GetAxis("Horizontal");
+        Vector3 movement = transform.forward * moveVertical * speed * Time.fixedDeltaTime;
+        rb.MovePosition(rb.position + movement);
+        Quaternion rotation = Quaternion.Euler(0, Rotation * RotationSpeed * Time.fixedDeltaTime, 0);
+        rb.MoveRotation(rb.rotation * rotation);
     }
 }

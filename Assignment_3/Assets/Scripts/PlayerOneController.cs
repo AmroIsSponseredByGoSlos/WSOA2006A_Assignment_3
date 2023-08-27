@@ -9,8 +9,8 @@ public class PlayerOneController : MonoBehaviour
 {
     private GameObject Player;
     public Rigidbody rb;
-    private float speed = 8.4f;
-    private float RotationSpeed = 60;
+    private float speed = 17.4f;
+    private float RotationSpeed = 120;
 
     public void Start()
     {

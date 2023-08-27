@@ -10,6 +10,7 @@ public class ShapeShift : MonoBehaviour
     public Material TransparentMaterial;
     public GameObject Props;
     public GameObject Player;
+    public int ActiveProp = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +38,7 @@ public class ShapeShift : MonoBehaviour
                             if (f.gameObject.name == "Main Camera" || f.gameObject.name == "Player" || f.gameObject.name == "Jug_01")
                             {
                                 f.gameObject.SetActive(true);
+                                ActiveProp = 1;
                             }
                             else
                             {
@@ -48,6 +50,7 @@ public class ShapeShift : MonoBehaviour
                             if (f.gameObject.name == "Main Camera" || f.gameObject.name == "Player" || f.gameObject.name == "Jug_02")
                             {
                                 f.gameObject.SetActive(true);
+                                ActiveProp = 2;
                             }
                             else
                             {
@@ -59,6 +62,7 @@ public class ShapeShift : MonoBehaviour
                             if (f.gameObject.name == "Main Camera" || f.gameObject.name == "Player" || f.gameObject.name == "Box_01")
                             {
                                 f.gameObject.SetActive(true);
+                                ActiveProp = 3;
                             }
                             else
                             {
@@ -74,6 +78,7 @@ public class ShapeShift : MonoBehaviour
                                 {
                                     Renderer PlayerRenderer = f.gameObject.GetComponent<Renderer>();
                                     PlayerRenderer.material = TransparentMaterial;
+                                    ActiveProp = 4;
                                 }
                             }
                             else
@@ -90,6 +95,7 @@ public class ShapeShift : MonoBehaviour
                                 {
                                     Renderer PlayerRenderer = f.gameObject.GetComponent<Renderer>();
                                     PlayerRenderer.material = TransparentMaterial;
+                                    ActiveProp = 5;
                                 }
                             }
                             else

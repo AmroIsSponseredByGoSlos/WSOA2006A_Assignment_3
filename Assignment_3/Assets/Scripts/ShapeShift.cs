@@ -8,10 +8,11 @@ public class ShapeShift : MonoBehaviour
     public Material HighLight;
     public Material NormalMaterial;
     public GameObject Props;
+    public GameObject Player;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -25,6 +26,25 @@ public class ShapeShift : MonoBehaviour
             {
                 Renderer ObjectRenderer = Hit.transform.gameObject.GetComponent<Renderer>();
                 ObjectRenderer.material = HighLight;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Transform[] Children = Player.GetComponentsInChildren<Transform>(true);
+                    foreach (Transform f in Children)
+                    {
+                        if (Hit.transform.gameObject.name == "Jug_01")
+                        {
+                            if (f.gameObject.name == "Main Camera" || f.gameObject.name == "Player" || f.gameObject.name == "Jug_01")
+                            {
+                                f.gameObject.SetActive(true);
+                                Debug.Log(f.gameObject.name);
+                            }
+                            else
+                            {
+                                f.gameObject.SetActive(false);
+                            }
+                        }
+                    }
+                }
             }
         }
         else
@@ -36,5 +56,9 @@ public class ShapeShift : MonoBehaviour
                 ChildRenderer.material = NormalMaterial;
             }
         }
+    }
+    public void PropShapeShift()
+    {
+       
     }
 }

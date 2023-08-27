@@ -7,6 +7,7 @@ public class ShapeShift : MonoBehaviour
     public float RayLength = 10f;
     public Material HighLight;
     public Material NormalMaterial;
+    public Material TransparentMaterial;
     public GameObject Props;
     public GameObject Player;
     // Start is called before the first frame update
@@ -36,7 +37,60 @@ public class ShapeShift : MonoBehaviour
                             if (f.gameObject.name == "Main Camera" || f.gameObject.name == "Player" || f.gameObject.name == "Jug_01")
                             {
                                 f.gameObject.SetActive(true);
-                                Debug.Log(f.gameObject.name);
+                            }
+                            else
+                            {
+                                f.gameObject.SetActive(false);
+                            }
+                        }
+                        else if (Hit.transform.gameObject.name == "Jug_02")
+                        {
+                            if (f.gameObject.name == "Main Camera" || f.gameObject.name == "Player" || f.gameObject.name == "Jug_02")
+                            {
+                                f.gameObject.SetActive(true);
+                            }
+                            else
+                            {
+                                f.gameObject.SetActive(false);
+                            }
+                        }
+                        else if (Hit.transform.gameObject.name == "Box_01")
+                        {
+                            if (f.gameObject.name == "Main Camera" || f.gameObject.name == "Player" || f.gameObject.name == "Box_01")
+                            {
+                                f.gameObject.SetActive(true);
+                            }
+                            else
+                            {
+                                f.gameObject.SetActive(false);
+                            }
+                        }
+                        else if (Hit.transform.gameObject.name == "SlantedStairs_01")
+                        {
+                            if (f.gameObject.name == "Main Camera" || f.gameObject.name == "Player" || f.gameObject.name == "SlantedStairs_01")
+                            {
+                                f.gameObject.SetActive(true);
+                                if (f.gameObject.name == "Player")
+                                {
+                                    Renderer PlayerRenderer = f.gameObject.GetComponent<Renderer>();
+                                    PlayerRenderer.material = TransparentMaterial;
+                                }
+                            }
+                            else
+                            {
+                                f.gameObject.SetActive(false);
+                            }
+                        }
+                        else if (Hit.transform.gameObject.name == "Stairs_01")
+                        {
+                            if (f.gameObject.name == "Main Camera" || f.gameObject.name == "Player" || f.gameObject.name == "Stairs_01")
+                            {
+                                f.gameObject.SetActive(true);
+                                if (f.gameObject.name == "Player")
+                                {
+                                    Renderer PlayerRenderer = f.gameObject.GetComponent<Renderer>();
+                                    PlayerRenderer.material = TransparentMaterial;
+                                }
                             }
                             else
                             {
@@ -56,9 +110,5 @@ public class ShapeShift : MonoBehaviour
                 ChildRenderer.material = NormalMaterial;
             }
         }
-    }
-    public void PropShapeShift()
-    {
-       
     }
 }

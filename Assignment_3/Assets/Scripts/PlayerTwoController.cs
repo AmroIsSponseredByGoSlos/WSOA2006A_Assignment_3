@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerOneController : MonoBehaviour
+[RequireComponent(typeof(CharacterController))]
+
+public class PlayerTwoController : MonoBehaviour
 {
     private GameObject Player;
     public Rigidbody rb;
@@ -18,8 +20,8 @@ public class PlayerOneController : MonoBehaviour
 
     public void FixedUpdate()
     {
-        float moveVertical = Input.GetAxis("VerticalArrowKeys");
-        float Rotation = Input.GetAxis("HorizontalArrowKeys");
+        float moveVertical = Input.GetAxis("VerticalLetterKeys");
+        float Rotation = Input.GetAxis("HorizontalLetterKeys");
         Vector3 movement = transform.forward * moveVertical * speed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + movement);
         Quaternion rotation = Quaternion.Euler(0, Rotation * RotationSpeed * Time.fixedDeltaTime, 0);

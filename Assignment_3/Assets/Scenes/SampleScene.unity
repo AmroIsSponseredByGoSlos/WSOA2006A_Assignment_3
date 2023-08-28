@@ -567,6 +567,8 @@ MonoBehaviour:
   Props: {fileID: 1264043956}
   NormalMaterial: {fileID: 2100000, guid: 6c2a7a3006db1df48b06fed4222a5f52, type: 2}
   shapeShift: {fileID: 0}
+  SeekerHighlighting: 0
+  Player: {fileID: 0}
 --- !u!4 &276627990 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4441194852809919528, guid: 5c6a1648d6f5d8b45997037cbb0ea5ff, type: 3}
@@ -1257,6 +1259,7 @@ MonoBehaviour:
   Props: {fileID: 1264043956}
   Player: {fileID: 473229981}
   ActiveProp: 0
+  IsHighlighting: 0
 --- !u!4 &473539877 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4646160277296803439, guid: 2d1aed8ada79e4d4e99084037c3b094a, type: 3}
@@ -2295,7 +2298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3956864845004347026, guid: 5c6a1648d6f5d8b45997037cbb0ea5ff, type: 3}
       propertyPath: m_TagString
-      value: Selectable
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4441194852809919528, guid: 5c6a1648d6f5d8b45997037cbb0ea5ff, type: 3}
       propertyPath: m_RootOrder

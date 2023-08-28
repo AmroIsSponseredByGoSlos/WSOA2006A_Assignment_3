@@ -25,9 +25,9 @@ public class ShapeShift : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out Hit, RayLength))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * RayLength, Color.white);
-            IsHighlighting = true;
             if (Hit.transform.gameObject.CompareTag("Selectable"))
             {
+                IsHighlighting = true;
                 Renderer ObjectRenderer = Hit.transform.gameObject.GetComponent<Renderer>();
                 ObjectRenderer.material = HighLight;
                 if (Input.GetMouseButtonDown(0))
@@ -112,12 +112,6 @@ public class ShapeShift : MonoBehaviour
         else
         {
             IsHighlighting = false;
-            /*for (int i = 0; i < Props.transform.childCount; i++)
-            {
-                Transform child = Props.transform.GetChild(i);
-                Renderer ChildRenderer = child.GetComponent<Renderer>();
-                ChildRenderer.material = NormalMaterial;
-            }*/
         }
     }
 }

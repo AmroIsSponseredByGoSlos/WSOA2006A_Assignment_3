@@ -27,7 +27,6 @@ public class ShapeShift : MonoBehaviour
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * RayLength, Color.white);
             if (Hit.transform.gameObject.CompareTag("Selectable"))
             {
-                IsHighlighting = true;
                 Renderer ObjectRenderer = Hit.transform.gameObject.GetComponent<Renderer>();
                 ObjectRenderer.material = HighLight;
                 if (Input.GetMouseButtonDown(0))
@@ -41,6 +40,7 @@ public class ShapeShift : MonoBehaviour
                             {
                                 f.gameObject.SetActive(true);
                                 ActiveProp = 1;
+                                IsHighlighting = true;
                             }
                             else
                             {
@@ -53,6 +53,7 @@ public class ShapeShift : MonoBehaviour
                             {
                                 f.gameObject.SetActive(true);
                                 ActiveProp = 2;
+                                IsHighlighting = true;
                             }
                             else
                             {
@@ -65,6 +66,7 @@ public class ShapeShift : MonoBehaviour
                             {
                                 f.gameObject.SetActive(true);
                                 ActiveProp = 3;
+                                IsHighlighting = true;
                             }
                             else
                             {
@@ -81,6 +83,7 @@ public class ShapeShift : MonoBehaviour
                                     Renderer PlayerRenderer = f.gameObject.GetComponent<Renderer>();
                                     PlayerRenderer.material = TransparentMaterial;
                                     ActiveProp = 4;
+                                    IsHighlighting = true;
                                 }
                             }
                             else
@@ -98,6 +101,7 @@ public class ShapeShift : MonoBehaviour
                                     Renderer PlayerRenderer = f.gameObject.GetComponent<Renderer>();
                                     PlayerRenderer.material = TransparentMaterial;
                                     ActiveProp = 5;
+                                    IsHighlighting = true;
                                 }
                             }
                             else

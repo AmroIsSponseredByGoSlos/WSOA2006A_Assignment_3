@@ -27,7 +27,6 @@ public class Seeker : MonoBehaviour
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * RayLength, Color.white);
             if (Hit.transform.gameObject.CompareTag("Selectable"))
             {
-
                 SeekerHighlighting = true;
                 Renderer ObjectRenderer = Hit.transform.gameObject.GetComponent<Renderer>();
                 ObjectRenderer.material = HighLight;
@@ -38,7 +37,7 @@ public class Seeker : MonoBehaviour
                 {
                     SeekerHighlighting = true;
                     Transform child = Player.transform.GetChild(i);
-                    if (child.gameObject.name != "Main Camera" && child.gameObject.name != "Player")
+                    if (child.gameObject.name != "Main Camera" && child.gameObject.name != "Player" && child.gameObject.name != "HiderCanvas")
                     {
                         Renderer ChildRenderer = child.GetComponent<Renderer>();
                         ChildRenderer.material = HighLight;
@@ -83,7 +82,7 @@ public class Seeker : MonoBehaviour
                 for (int i = 0; i < Player.transform.childCount; i++)
                 {
                     Transform child = Player.transform.GetChild(i);
-                    if (child.gameObject.name != "Main Camera" && child.gameObject.name != "Player")
+                    if (child.gameObject.name != "Main Camera" && child.gameObject.name != "Player" && child.gameObject.name != "HiderCanvas")
                     {
                         Renderer ChildRenderer = child.GetComponent<Renderer>();
                         ChildRenderer.material = NormalMaterial;

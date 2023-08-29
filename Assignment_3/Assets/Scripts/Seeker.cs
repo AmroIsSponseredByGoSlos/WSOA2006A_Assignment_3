@@ -42,9 +42,28 @@ public class Seeker : MonoBehaviour
                     {
                         Renderer ChildRenderer = child.GetComponent<Renderer>();
                         ChildRenderer.material = HighLight;
-                        if (Input.GetKey(KeyCode.Space) && shapeShift.ActiveProp == 1)
+                        if (Input.GetKey(KeyCode.Space))
                         {
-                            Debug.Log("Working");
+                            if (shapeShift.ActiveProp == 1)
+                            {
+                                Debug.Log("The player is hiding as Jug_01");
+                            }
+                            if (shapeShift.ActiveProp == 2)
+                            {
+                                Debug.Log("The player is hiding as Jug_02");
+                            }
+                            if (shapeShift.ActiveProp == 3)
+                            {
+                                Debug.Log("The player is hiding as Box_01");
+                            }
+                            if (shapeShift.ActiveProp == 4)
+                            {
+                                Debug.Log("The player is hiding as SlantedStairs_01");
+                            }
+                            if (shapeShift.ActiveProp == 5)
+                            {
+                                Debug.Log("The player is hiding as Stairs_01");
+                            }
                         }
                     }
                 }

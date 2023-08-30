@@ -23,6 +23,10 @@ public class PlayerOneController : MonoBehaviour
     public bool ShownGoHideCanvas = false;
     public GameController gameController;
     public bool HideTimeFinished = false;
+    public RectTransform StopWatch;
+    public bool ShowingTime = false;
+    public bool isMoving;
+    public Vector3 targetPosition;
 
     public void Start()
     {
@@ -51,7 +55,7 @@ public class PlayerOneController : MonoBehaviour
                         else
                         {
                             Timer--;
-                            //TimeText.text = $"{Timer} Seconds Remaining";
+                            TimeText.text = $"{Timer}";
                             Interval = 0f;
                         }
                     }
@@ -75,7 +79,36 @@ public class PlayerOneController : MonoBehaviour
                 ShownGoHideCanvas = true;
             }
         }
-            
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (!isMoving)
+            {
+                if (!ShowingTime)
+                {
+                    targetPosition = new Vector3(198f, -94.4f, -1.67f);
+                    ShowingTime = true;
+                }
+                else
+                {
+                    targetPosition = new Vector3(198f, -394.4f, -1.67f);
+                    ShowingTime = false;
+                }
+
+                isMoving = true;
+            }
+        }
+
+        if (isMoving)
+        {
+            float step = 550f * Time.deltaTime; 
+            StopWatch.localPosition = Vector3.MoveTowards(StopWatch.localPosition, targetPosition, step);
+            if (Vector3.Distance(StopWatch.localPosition, targetPosition) < 0.01f)
+            {
+                isMoving = false;
+            }
+        }
+
     }
         
 

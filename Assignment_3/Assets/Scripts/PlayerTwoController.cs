@@ -23,6 +23,8 @@ public class PlayerTwoController : MonoBehaviour
     public Vector3 targetPosition;
     public GameObject pauseUI;
     public bool isPaused = false;
+    public AudioSource src2;
+    public AudioClip TimeAudio;
 
     public void Start()
     {
@@ -47,6 +49,11 @@ public class PlayerTwoController : MonoBehaviour
                         Timer--;
                         TimeText.text = $"{Timer}";
                         Interval = 0f;
+                        if (Timer == 10)
+                        {
+                            src2.clip = TimeAudio;
+                            src2.Play();
+                        }
                     }
                 }
             }

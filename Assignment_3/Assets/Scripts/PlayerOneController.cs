@@ -32,6 +32,8 @@ public class PlayerOneController : MonoBehaviour
     public bool isPaused = false;
     public AudioSource src;
     public AudioClip HideAudio;
+    public AudioSource src2;
+    public AudioClip TimeAudio;
 
 
     public void Start()
@@ -65,6 +67,11 @@ public class PlayerOneController : MonoBehaviour
                             Timer--;
                             TimeText.text = $"{Timer}";
                             Interval = 0f;
+                            if (Timer == 10)
+                            {
+                                src2.clip = TimeAudio;
+                                src2.Play();
+                            }
                         }
                     }
                 }

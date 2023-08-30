@@ -12,7 +12,9 @@ public class GameController : MonoBehaviour
     public bool Started = false;
     public bool StudySessionFinished = false;
     public AudioSource src;
-    public AudioClip GameAudio;
+    public AudioClip GameAudio; 
+    public AudioSource src2;
+    public AudioClip TimeAudio;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +42,11 @@ public class GameController : MonoBehaviour
                 {
                     Timer--;
                     Interval = 0f;
+                    if (Timer == 10)
+                    {
+                        src2.clip = TimeAudio;
+                        src2.Play();
+                    }
                 }
             }
         }

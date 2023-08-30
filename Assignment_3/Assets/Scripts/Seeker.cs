@@ -12,6 +12,7 @@ public class Seeker : MonoBehaviour
     public bool SeekerHighlighting = false;
     public GameObject Player;
     public int Searches = 3;
+    public bool spaceBarPressed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,12 +32,18 @@ public class Seeker : MonoBehaviour
                 SeekerHighlighting = true;
                 Renderer ObjectRenderer = Hit.transform.gameObject.GetComponent<Renderer>();
                 ObjectRenderer.material = HighLight;
-                if (Input.GetKey(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) && !spaceBarPressed)
                 {
                     Debug.Log("Miss");
                     Searches--;
                     Debug.Log($"{Searches}");
-                    
+
+                    spaceBarPressed = true; 
+                }
+
+                if (Input.GetKeyUp(KeyCode.Space))
+                {
+                    spaceBarPressed = false;
                 }
             }
             if (Hit.transform.gameObject.name == "Player")

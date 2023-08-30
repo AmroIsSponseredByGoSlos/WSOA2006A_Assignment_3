@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerOneController : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class PlayerOneController : MonoBehaviour
     public bool ShowingTime = false;
     public bool isMoving;
     public Vector3 targetPosition;
+    public GameObject pauseUI;
+    public bool isPaused = false;
 
     public void Start()
     {
@@ -111,6 +114,11 @@ public class PlayerOneController : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape) && !HideTimeFinished && gameController.StudySessionFinished)
+        {
+            TogglePause();
+        }
+
     }
         
 
@@ -130,5 +138,38 @@ public class PlayerOneController : MonoBehaviour
     public void GoHide()
     {
         Started = true;
+    }
+
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
+
+        if (isPaused)
+        {
+            Time.timeScale = 0;
+            pauseUI.SetActive(true); 
+        }
+        else
+        {
+            Time.timeScale = 1;
+            pauseUI.SetActive(false); 
+        }
+    }
+
+    public void OnContinueClick()
+    {
+        Time.timeScale = 1;
+        pauseUI.SetActive(false);
+    }
+
+    public void OnRestartClick()
+    {
+        SceneManager.LoadScene("IntroScene");
+        Time.timeScale = 1;
+    }
+
+    public void OnEndClick()
+    {
+        Application.Quit();
     }
 }

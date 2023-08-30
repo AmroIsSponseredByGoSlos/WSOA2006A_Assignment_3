@@ -20,6 +20,8 @@ public class PlayerTwoController : MonoBehaviour
     public bool ShowingTime = false;
     public bool isMoving;
     public Vector3 targetPosition;
+    public GameObject pauseUI;
+    public bool isPaused = false;
 
     public void Start()
     {
@@ -81,7 +83,12 @@ public class PlayerTwoController : MonoBehaviour
                 }
             }
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.Escape) && playerOneController.HideTimeFinished)
+        {
+            TogglePause();
+        }
+
     }
 
     public void FixedUpdate()
@@ -97,5 +104,27 @@ public class PlayerTwoController : MonoBehaviour
     public void GoSeek()
     {
         Started = true;
+    }
+
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
+
+        if (isPaused)
+        {
+            Time.timeScale = 0;
+            pauseUI.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            pauseUI.SetActive(false);
+        }
+    }
+
+    public void OnContinueClick()
+    {
+        Time.timeScale = 1;
+        pauseUI.SetActive(false);
     }
 }

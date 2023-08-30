@@ -64,6 +64,8 @@ public class PlayerOneController : MonoBehaviour
                 {
                     TimerActive = false;
                     HideTimeFinished = true;
+                    targetPosition = new Vector3(198f, -394.4f, -1.67f);
+                    isMoving = true;
                     Rect newViewportRect = new Rect(0f, 0f, 1f, 1f);
                     SeekerCamera.rect = newViewportRect;
                     if (!ShownCanvas)
@@ -80,7 +82,7 @@ public class PlayerOneController : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && !HideTimeFinished && gameController.StudySessionFinished)
         {
             if (!isMoving)
             {

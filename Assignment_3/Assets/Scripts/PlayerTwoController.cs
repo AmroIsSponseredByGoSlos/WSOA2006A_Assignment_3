@@ -16,6 +16,10 @@ public class PlayerTwoController : MonoBehaviour
     public bool TimerActive = true;
     public bool Started = false;
     public PlayerOneController playerOneController;
+    public RectTransform StopWatch;
+    public bool ShowingTime = false;
+    public bool isMoving;
+    public Vector3 targetPosition;
 
     public void Start()
     {
@@ -38,7 +42,7 @@ public class PlayerTwoController : MonoBehaviour
                     else
                     {
                         Timer--;
-                        //TimeText.text = $"{Timer} Seconds Remaining";
+                        TimeText.text = $"{Timer}";
                         Interval = 0f;
                     }
                 }
@@ -46,6 +50,35 @@ public class PlayerTwoController : MonoBehaviour
             else
             {
                 TimerActive = false;
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                if (!isMoving)
+                {
+                    if (!ShowingTime)
+                    {
+                        targetPosition = new Vector3(167f, -88f, 0);
+                        ShowingTime = true;
+                    }
+                    else
+                    {
+                        targetPosition = new Vector3(167f, -324f, 0f);
+                        ShowingTime = false;
+                    }
+
+                    isMoving = true;
+                }
+            }
+
+            if (isMoving)
+            {
+                float step = 550f * Time.deltaTime;
+                StopWatch.localPosition = Vector3.MoveTowards(StopWatch.localPosition, targetPosition, step);
+                if (Vector3.Distance(StopWatch.localPosition, targetPosition) < 0.01f)
+                {
+                    isMoving = false;
+                }
             }
         }
         

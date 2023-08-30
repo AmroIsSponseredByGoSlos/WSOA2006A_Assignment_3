@@ -11,6 +11,7 @@ public class Seeker : MonoBehaviour
     public ShapeShift shapeShift;
     public bool SeekerHighlighting = false;
     public GameObject Player;
+    public int Searches = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +31,13 @@ public class Seeker : MonoBehaviour
                 SeekerHighlighting = true;
                 Renderer ObjectRenderer = Hit.transform.gameObject.GetComponent<Renderer>();
                 ObjectRenderer.material = HighLight;
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    Debug.Log("Miss");
+                    Searches--;
+                    Debug.Log($"{Searches}");
+                    
+                }
             }
             if (Hit.transform.gameObject.name == "Player")
             {
@@ -89,6 +97,10 @@ public class Seeker : MonoBehaviour
                     }                       
                 }
             }
+        }
+        if (Searches == 0)
+        {
+            Debug.Log("Hider Wins");
         }
     }
 }

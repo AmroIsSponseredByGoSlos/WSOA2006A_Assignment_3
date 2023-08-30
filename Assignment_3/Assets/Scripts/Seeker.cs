@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Seeker : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class Seeker : MonoBehaviour
     public int Searches = 3;
     public bool spaceBarPressed = false;
     public GameObject[] Hearts;
+    public AudioSource src;
+    public AudioClip SearchAudio;
+    public GameController gameController;
 
     // Start is called before the first frame update
     void Start()
@@ -34,13 +38,18 @@ public class Seeker : MonoBehaviour
                 SeekerHighlighting = true;
                 Renderer ObjectRenderer = Hit.transform.gameObject.GetComponent<Renderer>();
                 ObjectRenderer.material = HighLight;
-                if (Input.GetKeyDown(KeyCode.Space) && !spaceBarPressed)
+                if (Input.GetKeyDown(KeyCode.Space) && gameController.StudySessionFinished)
+                {
+                    src.clip = SearchAudio;
+                    src.Play();
+                }
+                if (Input.GetKeyDown(KeyCode.Space) && !spaceBarPressed && gameController.StudySessionFinished)
                 {
                     Debug.Log("Miss");
                     Searches--;
                     Debug.Log($"{Searches}");
                     spaceBarPressed = true;
-                    Hearts[Searches].SetActive(false);
+                    Hearts[Searches].SetActive(false);                    
                 }
 
                 if (Input.GetKeyUp(KeyCode.Space))
@@ -60,26 +69,7 @@ public class Seeker : MonoBehaviour
                         ChildRenderer.material = HighLight;
                         if (Input.GetKey(KeyCode.Space))
                         {
-                            if (shapeShift.ActiveProp == 1)
-                            {
-                                Debug.Log("The player is hiding as Jug_01");
-                            }
-                            if (shapeShift.ActiveProp == 2)
-                            {
-                                Debug.Log("The player is hiding as Jug_02");
-                            }
-                            if (shapeShift.ActiveProp == 3)
-                            {
-                                Debug.Log("The player is hiding as Box_01");
-                            }
-                            if (shapeShift.ActiveProp == 4)
-                            {
-                                Debug.Log("The player is hiding as SlantedStairs_01");
-                            }
-                            if (shapeShift.ActiveProp == 5)
-                            {
-                                Debug.Log("The player is hiding as Stairs_01");
-                            }
+                            SceneManager.LoadScene("SeekerWinsScene");
                         }
                     }
                 }
@@ -109,7 +99,7 @@ public class Seeker : MonoBehaviour
         }
         if (Searches == 0)
         {
-            Debug.Log("Hider Wins");
+            SceneManager.LoadScene("HiderWinsScene");
         }
     }
 }

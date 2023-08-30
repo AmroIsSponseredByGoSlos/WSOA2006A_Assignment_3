@@ -14,6 +14,7 @@ public class ShapeShift : MonoBehaviour
     public bool IsHighlighting = false;
     public AudioSource src;
     public AudioClip Zipper;
+    public GameController gameController;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,7 @@ public class ShapeShift : MonoBehaviour
             {
                 Renderer ObjectRenderer = Hit.transform.gameObject.GetComponent<Renderer>();
                 ObjectRenderer.material = HighLight;
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) && gameController.StudySessionFinished)
                 {
                     src.clip = Zipper;
                     src.Play();

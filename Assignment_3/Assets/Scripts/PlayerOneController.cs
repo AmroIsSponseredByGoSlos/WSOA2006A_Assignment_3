@@ -30,10 +30,14 @@ public class PlayerOneController : MonoBehaviour
     public Vector3 targetPosition;
     public GameObject pauseUI;
     public bool isPaused = false;
+    public AudioSource src;
+    public AudioClip HideAudio;
 
 
     public void Start()
     {
+        src.clip = HideAudio;
+        src.Play();
         Player = gameObject;
         rb = Player.GetComponent<Rigidbody>();        
     }

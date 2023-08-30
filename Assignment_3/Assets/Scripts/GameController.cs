@@ -11,10 +11,13 @@ public class GameController : MonoBehaviour
     public bool TimerActive = true;
     public bool Started = false;
     public bool StudySessionFinished = false;
+    public AudioSource src;
+    public AudioClip GameAudio;
     // Start is called before the first frame update
     void Start()
     {
-        
+        src.clip = GameAudio;
+        src.Play();
     }
 
     // Update is called once per frame
@@ -36,7 +39,6 @@ public class GameController : MonoBehaviour
                 else
                 {
                     Timer--;
-                    //TimeText.text = $"{Timer} Seconds Remaining";
                     Interval = 0f;
                 }
             }

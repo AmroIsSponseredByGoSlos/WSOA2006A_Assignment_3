@@ -13,6 +13,8 @@ public class Seeker : MonoBehaviour
     public GameObject Player;
     public int Searches = 3;
     public bool spaceBarPressed = false;
+    public GameObject[] Hearts;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,8 +39,8 @@ public class Seeker : MonoBehaviour
                     Debug.Log("Miss");
                     Searches--;
                     Debug.Log($"{Searches}");
-
-                    spaceBarPressed = true; 
+                    spaceBarPressed = true;
+                    Hearts[Searches].SetActive(false);
                 }
 
                 if (Input.GetKeyUp(KeyCode.Space))

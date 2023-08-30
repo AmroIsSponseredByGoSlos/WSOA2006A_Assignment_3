@@ -31,6 +31,7 @@ public class PlayerOneController : MonoBehaviour
     public GameObject pauseUI;
     public bool isPaused = false;
 
+
     public void Start()
     {
         Player = gameObject;
